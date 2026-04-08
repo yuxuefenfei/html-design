@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>星光汇聚 - 孟颖</title>
+    <title>星光汇聚 - [姓名]</title>
     <style>
         body { margin: 0; background: radial-gradient(circle at center, #1b0a1a 0%, #05020a 100%); overflow: hidden; font-family: 'Segoe UI', Tahoma, sans-serif; color: white; display: flex; justify-content: center; align-items: center; height: 100vh; }
         #canvas { position: absolute; top: 0; left: 0; z-index: 1; }
@@ -54,9 +54,9 @@
 
     <script>
         const CONFIG = {
-            targetName: '孟颖',
+            targetName: '[姓名]',
             modalTitle: '星光汇聚',
-            modalDesc: '于浩瀚星河中溯流而上，万千微光最终只奔向一个坐标。我的眼里，自此只汇聚成了一个你——孟颖。'
+            modalDesc: '于浩瀚星河中溯流而上，万千微光最终只奔向一个坐标。我的眼里，自此只汇聚成了一个你——[姓名]。'
         };
 
         document.getElementById('modalTitle').innerText = CONFIG.modalTitle;
@@ -71,7 +71,7 @@
         const targets = [];
         let state = 'wandering'; // wandering, forming
 
-        // Extract text pixels for "孟颖"
+        // Extract text pixels for "[姓名]"
         const tCanvas = document.createElement('canvas');
         const tCtx = tCanvas.getContext('2d');
         tCanvas.width = 600; tCanvas.height = 300;
