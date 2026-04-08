@@ -45,14 +45,23 @@
     
     <div class="info-btn" id="openModal">📖 寓意</div>
     <div class="modal" id="modal">
-        <h2>星光汇聚</h2>
-        <p>于浩瀚星河中溯流而上，万千微光最终只奔向一个坐标。我的眼里，自此只汇聚成了一个你——孟颖。</p>
+        <h2 id="modalTitle"></h2>
+        <p id="modalDesc"></p>
         <button class="close-btn" id="closeModal">关闭</button>
     </div>
 
     <canvas id="canvas"></canvas>
 
     <script>
+        const CONFIG = {
+            targetName: '孟颖',
+            modalTitle: '星光汇聚',
+            modalDesc: '于浩瀚星河中溯流而上，万千微光最终只奔向一个坐标。我的眼里，自此只汇聚成了一个你——孟颖。'
+        };
+
+        document.getElementById('modalTitle').innerText = CONFIG.modalTitle;
+        document.getElementById('modalDesc').innerText = CONFIG.modalDesc;
+
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
         let width = canvas.width = window.innerWidth;
@@ -70,7 +79,7 @@
         tCtx.font = 'bold 150px "Segoe UI", sans-serif';
         tCtx.textAlign = 'center';
         tCtx.textBaseline = 'middle';
-        tCtx.fillText('孟颖', 300, 150);
+        tCtx.fillText(CONFIG.targetName, 300, 150);
 
         const imgData = tCtx.getImageData(0,0, 600, 300).data;
         const offsetX = width/2 - 300;

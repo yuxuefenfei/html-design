@@ -135,19 +135,15 @@
 <body>
     <div class="info-btn" id="openModal">📖 寓意</div>
     <div class="modal" id="modal">
-        <h2 style="color:#d37373; margin-top:0;">专属信件</h2>
-        <p>在任何心意都可以被瞬间发送的年代，我依然固执地想用一封盖着火漆印的复古信封，郑重其事地将我最诚挚的偏爱交到你手上。</p>
+        <h2 style="color:#d37373; margin-top:0;" id="modalTitle"></h2>
+        <p id="modalDesc"></p>
         <button class="close-btn" id="closeModal">关闭</button>
     </div>
 
     <div class="container" id="mail">
         <div class="envelope-back"></div>
         <div class="letter-slot">
-            <div class="letter">
-                <h3>致 我的孟颖</h3>
-                <p>遇见你的那一刻，<br>就像是平淡生活里照进了一束光。</p>
-                <p>愿2000年的小龙女，<br>能一直开心、快乐。</p>
-                <p style="text-align:right; margin-top:20px;">—— 爱你的某人</p>
+            <div class="letter" id="letterInner">
             </div>
         </div>
         <div class="envelope-front"></div>
@@ -157,6 +153,27 @@
     </div>
 
     <script>
+        const CONFIG = {
+            modalTitle: '专属信件',
+            modalDesc: '在任何心意都可以被瞬间发送的年代，我依然固执地想用一封盖着火漆印的复古信封，郑重其事地将我最诚挚的偏爱交到你手上。',
+            letterTitle: '致 我的孟颖',
+            letterParagraphs: [
+                '遇见你的那一刻，<br>就像是平淡生活里照进了一束光。',
+                '愿2000年的小龙女，<br>能一直开心、快乐。',
+                '<span style="display:block; text-align:right; margin-top:20px;">—— 爱你的某人</span>'
+            ]
+        };
+
+        document.getElementById('modalTitle').innerText = CONFIG.modalTitle;
+        document.getElementById('modalDesc').innerText = CONFIG.modalDesc;
+
+        const letterInner = document.getElementById('letterInner');
+        let html = `<h3>${CONFIG.letterTitle}</h3>`;
+        CONFIG.letterParagraphs.forEach((p, index) => {
+            html += `<p style="transition-delay: ${1.6 + index * 0.15}s;">${p}</p>`;
+        });
+        letterInner.innerHTML = html;
+
         const mail = document.getElementById('mail');
         const hint = document.querySelector('.hint');
         

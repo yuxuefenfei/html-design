@@ -66,46 +66,51 @@
 
     <div class="info-btn" id="openModal">📖 寓意</div>
     <div class="modal" id="modal">
-        <h2 style="color:#ff2a55; margin-top:0;">时光轴</h2>
-        <p>千禧年降生的灵动小白龙，跨越光阴开启了属于我们的纪元。刻度上的每一行印记，都是我想陪你慢慢走过的未来。</p>
+        <h2 style="color:#ff2a55; margin-top:0;" id="modalTitle"></h2>
+        <p id="modalDesc"></p>
         <button class="close-btn" id="closeModal">关闭</button>
     </div>
 
     <div class="hero">
         <div class="heart" id="trigger"></div>
-        <div class="title">2000 · 龙之女</div>
+        <div class="title" id="heroTitle"></div>
         <div class="hint">点击开启时光机 ↓</div>
     </div>
 
     <div class="timeline-section" id="timeline">
         <div class="timeline-line"></div>
-        <div class="event">
-            <div class="event-content">
-                <div class="year">2000 🐉</div>
-                <p>千禧之年，一条灵动的小龙在这个世界降生。她的名字叫孟颖。</p>
-            </div>
-        </div>
-        <div class="event">
-            <div class="event-content">
-                <div class="year">相遇的那天</div>
-                <p>在人生的某个节点，命运安排我们相遇。那一天，星光格外灿烂。</p>
-            </div>
-        </div>
-        <div class="event">
-            <div class="event-content">
-                <div class="year">现在的每一天</div>
-                <p>陪伴是最长情的告白。未来的时间轴，我想和你一起填满。</p>
-            </div>
-        </div>
-        <div class="event">
-            <div class="event-content">
-                <div class="year">Forever</div>
-                <p>未完待续...</p>
-            </div>
-        </div>
     </div>
 
     <script>
+        const CONFIG = {
+            modalTitle: '时光轴',
+            modalDesc: '千禧年降生的灵动小白龙，跨越光阴开启了属于我们的纪元。刻度上的每一行印记，都是我想陪你慢慢走过的未来。',
+            heroTitle: '2000 · 龙之女',
+            events: [
+                { year: '2000 🐉', desc: '千禧之年，一条灵动的小龙在这个世界降生。她的名字叫孟颖。' },
+                { year: '相遇的那天', desc: '在人生的某个节点，命运安排我们相遇。那一天，星光格外灿烂。' },
+                { year: '现在的每一天', desc: '陪伴是最长情的告白。未来的时间轴，我想和你一起填满。' },
+                { year: 'Forever', desc: '未完待续...' }
+            ]
+        };
+
+        document.getElementById('modalTitle').innerText = CONFIG.modalTitle;
+        document.getElementById('modalDesc').innerText = CONFIG.modalDesc;
+        document.getElementById('heroTitle').innerText = CONFIG.heroTitle;
+        
+        const timelineContainer = document.getElementById('timeline');
+        CONFIG.events.forEach(item => {
+            const el = document.createElement('div');
+            el.className = 'event';
+            el.innerHTML = `
+                <div class="event-content">
+                    <div class="year">${item.year}</div>
+                    <p>${item.desc}</p>
+                </div>
+            `;
+            timelineContainer.appendChild(el);
+        });
+
         document.getElementById('openModal').addEventListener('click', () => document.getElementById('modal').style.display = 'block');
         document.getElementById('closeModal').addEventListener('click', () => document.getElementById('modal').style.display = 'none');
 
